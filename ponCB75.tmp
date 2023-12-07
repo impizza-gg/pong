@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://becj25kfrxw1t"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_blhl7"]
+[ext_resource type="Script" path="res://bola.gd" id="2_053r4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk2lk"]
+size = Vector2(1214.94, 133.495)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_247oo"]
+size = Vector2(32, 176)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p35fs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gouu"]
+size = Vector2(23.9338, 23.865)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_skgp8"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="topo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topo"]
+position = Vector2(577, -63)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="embaixo" type="Area2D" parent="."]
+position = Vector2(-2, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="embaixo"]
+position = Vector2(578.25, 347)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="esquerda" type="Area2D" parent="."]
+position = Vector2(-151, -182)
+rotation = 1.57052
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="esquerda"]
+position = Vector2(494.026, -94.8626)
+scale = Vector2(0.82, 0.82)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="direita" type="Area2D" parent="."]
+position = Vector2(-160, -200)
+rotation = 1.57052
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="direita"]
+position = Vector2(492.382, -1372.86)
+scale = Vector2(0.82, 0.82)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(80, 296)
+script = ExtResource("1_blhl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_247oo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-3.57628e-06, -5.24521e-06)
+scale = Vector2(32, 176)
+texture = SubResource("PlaceholderTexture2D_p35fs")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(1072, 296)
+script = ExtResource("1_blhl7")
+side = "p2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("RectangleShape2D_247oo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+position = Vector2(-3.57628e-06, -5.24521e-06)
+scale = Vector2(32, 176)
+texture = SubResource("PlaceholderTexture2D_p35fs")
+
+[node name="bola" type="CharacterBody2D" parent="."]
+script = ExtResource("2_053r4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bola"]
+position = Vector2(548.033, 275.932)
+shape = SubResource("RectangleShape2D_3gouu")
+
+[node name="Sprite2D" type="Sprite2D" parent="bola"]
+position = Vector2(548.111, 276.136)
+scale = Vector2(-24.2221, 23.7493)
+texture = SubResource("PlaceholderTexture2D_skgp8")

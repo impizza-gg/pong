@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://becj25kfrxw1t"]
+
+[ext_resource type="Script" path="res://jogo.gd" id="1_dqqwo"]
+[ext_resource type="PackedScene" uid="uid://dg0tvg7xork4g" path="res://player.tscn" id="2_ocl6t"]
+[ext_resource type="PackedScene" uid="uid://dtp545sv0p1c6" path="res://bola.tscn" id="3_5lo7j"]
+[ext_resource type="PackedScene" uid="uid://cu3qpouov0xec" path="res://player_2.tscn" id="3_bbetu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk2lk"]
+size = Vector2(1214.94, 133.495)
+
+[sub_resource type="SystemFont" id="SystemFont_vxd73"]
+font_names = PackedStringArray("Sans-Serif")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_dqqwo")
+
+[node name="topo" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topo"]
+position = Vector2(577, -63)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="embaixo" type="Area2D" parent="."]
+position = Vector2(-2, 360)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="embaixo"]
+position = Vector2(578.25, 347)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="esquerda" type="Area2D" parent="."]
+position = Vector2(-151, -182)
+rotation = 1.57052
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="esquerda"]
+position = Vector2(494.026, -94.8626)
+scale = Vector2(0.82, 0.82)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="direita" type="Area2D" parent="."]
+position = Vector2(-160, -200)
+rotation = 1.57052
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="direita"]
+position = Vector2(492.382, -1372.86)
+scale = Vector2(0.82, 0.82)
+shape = SubResource("RectangleShape2D_dk2lk")
+
+[node name="Player" parent="." instance=ExtResource("2_ocl6t")]
+collision_layer = 1
+collision_mask = 1
+
+[node name="Player2" parent="." instance=ExtResource("3_bbetu")]
+collision_layer = 1
+collision_mask = 1
+
+[node name="bola" parent="." instance=ExtResource("3_5lo7j")]
+position = Vector2(528, 288)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 264.0
+offset_bottom = 31.0
+scale = Vector2(7.09595, 6.46774)
+theme_override_fonts/font = SubResource("SystemFont_vxd73")
+text = "0"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 736.0
+offset_top = 8.0
+offset_right = 776.0
+offset_bottom = 31.0
+scale = Vector2(7.09595, 6.46774)
+theme_override_fonts/font = SubResource("SystemFont_vxd73")
+text = "0"
+
+[connection signal="body_entered" from="topo" to="." method="_on_topo_body_entered"]
+[connection signal="body_entered" from="embaixo" to="." method="_on_embaixo_body_entered"]
+[connection signal="body_entered" from="esquerda" to="." method="_on_esquerda_body_entered"]
+[connection signal="body_entered" from="direita" to="." method="_on_direita_body_entered"]
