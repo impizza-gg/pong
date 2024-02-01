@@ -11,7 +11,7 @@ func _physics_process(delta):
 	if side == 'p1':
 		direction = get_axis(KEY_W, KEY_S)
 	else:
-		direction = get_axis(KEY_I, KEY_K)
+		direction = get_axis(KEY_UP, KEY_DOWN)
 	
 	if direction:
 		velocity.y = direction * SPEED
