@@ -21,7 +21,7 @@ func _on_embaixo_body_entered(body):
 func _on_esquerda_body_entered(body):
 	body.queue_free()
 	var e = preload("res://bola.tscn").instantiate()
-	e.global_position = Vector2(576, 320)
+	e.global_position = Vector2(960, 560)
 	add_child(e)
 	Main.p2_score += 1
 	$Goal.play()
@@ -29,7 +29,7 @@ func _on_esquerda_body_entered(body):
 func _on_direita_body_entered(body):
 	body.queue_free()
 	var e = preload("res://bola.tscn").instantiate()
-	e.global_position = Vector2(576, 320)
+	e.global_position = Vector2(960, 560)
 	add_child(e)
 	Main.p1_score += 1
 	$Goal.play()
