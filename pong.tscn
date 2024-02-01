@@ -9,7 +9,8 @@
 size = Vector2(1214.94, 133.495)
 
 [sub_resource type="SystemFont" id="SystemFont_vxd73"]
-font_names = PackedStringArray("Sans-Serif")
+font_names = PackedStringArray("", "Fantasy")
+oversampling = 10.0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dqqwo")
@@ -49,7 +50,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="direita"]
-position = Vector2(492.382, -1372.86)
+position = Vector2(492.38, -1366.86)
 scale = Vector2(0.82, 0.82)
 shape = SubResource("RectangleShape2D_dk2lk")
 
@@ -62,23 +63,26 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="bola" parent="." instance=ExtResource("3_5lo7j")]
-position = Vector2(528, 288)
+position = Vector2(576, 325)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 224.0
-offset_top = 8.0
-offset_right = 264.0
-offset_bottom = 31.0
+offset_left = 200.0
+offset_top = 10.0
+offset_right = 207.0
+offset_bottom = 27.0
 scale = Vector2(7.09595, 6.46774)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_vxd73")
 text = "0"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 736.0
-offset_top = 8.0
-offset_right = 776.0
-offset_bottom = 31.0
+offset_left = 953.0
+offset_top = 10.0
+offset_right = 960.0
+offset_bottom = 27.0
 scale = Vector2(7.09595, 6.46774)
+theme_override_colors/font_color = Color(0.580392, 0.0666667, 0.54902, 1)
 theme_override_fonts/font = SubResource("SystemFont_vxd73")
 text = "0"
 
