@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dg0tvg7xork4g"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_2aodn"]
+[ext_resource type="Texture2D" uid="uid://87m08iit8jtg" path="res://assets/toto.jpg" id="2_m1m8n"]
 [ext_resource type="AudioStream" uid="uid://bnsnfcm7owwbr" path="res://sounds/player_colision.mp3" id="2_s0k14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_247oo"]
-size = Vector2(32, 176)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p35fs"]
+size = Vector2(75.5, 249.292)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtj0l"]
-size = Vector2(32, 176)
+size = Vector2(79.5, 247)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(80, 296)
@@ -18,21 +17,24 @@ collision_mask = 2
 script = ExtResource("1_2aodn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-40.75, -170.646)
 shape = SubResource("RectangleShape2D_247oo")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.57628e-06, -5.24521e-06)
-scale = Vector2(32, 176)
-texture = SubResource("PlaceholderTexture2D_p35fs")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-40.75, -172.5)
 shape = SubResource("RectangleShape2D_dtj0l")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s0k14")
+
+[node name="Toto" type="Sprite2D" parent="."]
+position = Vector2(-40.5219, -170.985)
+rotation = -1.56871
+scale = Vector2(0.230331, 0.226232)
+texture = ExtResource("2_m1m8n")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

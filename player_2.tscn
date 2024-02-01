@@ -2,35 +2,37 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_tk0m7"]
 [ext_resource type="AudioStream" uid="uid://bnsnfcm7owwbr" path="res://sounds/player_colision.mp3" id="2_itq53"]
+[ext_resource type="Texture2D" uid="uid://rer3arjmultk" path="res://assets/toto reverso.jpg" id="3_udsn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_247oo"]
-size = Vector2(32, 176)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p35fs"]
+size = Vector2(77, 248.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7wej"]
-size = Vector2(32, 176)
+size = Vector2(80.5, 244.5)
 
 [node name="Player2" type="CharacterBody2D"]
-position = Vector2(1072, 296)
+position = Vector2(53, 88)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_tk0m7")
 side = "p2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13.5, 37.75)
 shape = SubResource("RectangleShape2D_247oo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.57628e-06, -5.24521e-06)
-scale = Vector2(32, 176)
-texture = SubResource("PlaceholderTexture2D_p35fs")
+[node name="TotoReverso" type="Sprite2D" parent="."]
+position = Vector2(-12.5067, 37.3577)
+rotation = 1.57123
+scale = Vector2(0.231178, 0.226297)
+texture = ExtResource("3_udsn2")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-13.25, 35.75)
 shape = SubResource("RectangleShape2D_w7wej")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]

@@ -64,12 +64,12 @@ scale = Vector2(0.82, 0.82)
 shape = SubResource("RectangleShape2D_dk2lk")
 
 [node name="Player" parent="." instance=ExtResource("2_ocl6t")]
-position = Vector2(68, 559)
+position = Vector2(180, 759)
 collision_layer = 1
 collision_mask = 1
 
 [node name="Player2" parent="." instance=ExtResource("3_bbetu")]
-position = Vector2(1877, 553)
+position = Vector2(1877, 549)
 collision_layer = 1
 collision_mask = 1
 
