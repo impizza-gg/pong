@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://becj25kfrxw1t"]
+[gd_scene load_steps=11 format=3 uid="uid://becj25kfrxw1t"]
 
 [ext_resource type="Script" path="res://jogo.gd" id="1_dqqwo"]
 [ext_resource type="PackedScene" uid="uid://dg0tvg7xork4g" path="res://player.tscn" id="2_ocl6t"]
 [ext_resource type="PackedScene" uid="uid://dtp545sv0p1c6" path="res://bola.tscn" id="3_5lo7j"]
 [ext_resource type="PackedScene" uid="uid://cu3qpouov0xec" path="res://player_2.tscn" id="3_bbetu"]
+[ext_resource type="AudioStream" uid="uid://qbbwvdwvr06y" path="res://sounds/colision.mp3" id="5_fgwlb"]
+[ext_resource type="AudioStream" uid="uid://bijltkk5xwuyg" path="res://sounds/win.mp3" id="6_amn6q"]
+[ext_resource type="AudioStream" uid="uid://cu15adf1viqb8" path="res://sounds/point.mp3" id="7_sqmwi"]
+[ext_resource type="Texture2D" uid="uid://2rorxv5bbkbl" path="res://assets/background.jpeg" id="8_cs4dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk2lk"]
-size = Vector2(1214.94, 133.495)
+size = Vector2(2252.23, 133.495)
 
 [sub_resource type="SystemFont" id="SystemFont_vxd73"]
 font_names = PackedStringArray("", "Fantasy")
@@ -15,12 +19,17 @@ oversampling = 10.0
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dqqwo")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(993.5, 526.5)
+scale = Vector2(6.72333, 6.76786)
+texture = ExtResource("8_cs4dr")
+
 [node name="topo" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topo"]
-position = Vector2(577, -63)
+position = Vector2(970, -98)
 shape = SubResource("RectangleShape2D_dk2lk")
 
 [node name="embaixo" type="Area2D" parent="."]
@@ -29,7 +38,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="embaixo"]
-position = Vector2(578.25, 347)
+position = Vector2(982, 787)
 shape = SubResource("RectangleShape2D_dk2lk")
 
 [node name="esquerda" type="Area2D" parent="."]
@@ -39,7 +48,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="esquerda"]
-position = Vector2(494.026, -94.8626)
+position = Vector2(757.027, -95.7909)
 scale = Vector2(0.82, 0.82)
 shape = SubResource("RectangleShape2D_dk2lk")
 
@@ -50,26 +59,29 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="direita"]
-position = Vector2(492.38, -1366.86)
+position = Vector2(742.608, -2199.8)
 scale = Vector2(0.82, 0.82)
 shape = SubResource("RectangleShape2D_dk2lk")
 
 [node name="Player" parent="." instance=ExtResource("2_ocl6t")]
+position = Vector2(68, 559)
 collision_layer = 1
 collision_mask = 1
 
 [node name="Player2" parent="." instance=ExtResource("3_bbetu")]
+position = Vector2(1877, 553)
 collision_layer = 1
 collision_mask = 1
 
 [node name="bola" parent="." instance=ExtResource("3_5lo7j")]
-position = Vector2(576, 325)
+position = Vector2(988, 550)
+scale = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 200.0
-offset_top = 10.0
-offset_right = 207.0
-offset_bottom = 27.0
+offset_left = 410.0
+offset_top = 163.0
+offset_right = 421.0
+offset_bottom = 188.0
 scale = Vector2(7.09595, 6.46774)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_vxd73")
@@ -77,16 +89,42 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 953.0
-offset_top = 10.0
-offset_right = 960.0
-offset_bottom = 27.0
+offset_left = 1518.0
+offset_top = 151.0
+offset_right = 1529.0
+offset_bottom = 176.0
 scale = Vector2(7.09595, 6.46774)
 theme_override_colors/font_color = Color(0.580392, 0.0666667, 0.54902, 1)
 theme_override_fonts/font = SubResource("SystemFont_vxd73")
 text = "0"
 
+[node name="WallHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fgwlb")
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_amn6q")
+
+[node name="Goal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_sqmwi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = -1
+anchor_right = 0.031
+anchor_bottom = 0.029
+offset_left = 805.0
+offset_top = 670.0
+offset_right = 804.62
+offset_bottom = 669.68
+scale = Vector2(6.25432, 7.23681)
+text = "restart"
+
 [connection signal="body_entered" from="topo" to="." method="_on_topo_body_entered"]
 [connection signal="body_entered" from="embaixo" to="." method="_on_embaixo_body_entered"]
 [connection signal="body_entered" from="esquerda" to="." method="_on_esquerda_body_entered"]
 [connection signal="body_entered" from="direita" to="." method="_on_direita_body_entered"]
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="." method="_on_restart_button_pressed"]

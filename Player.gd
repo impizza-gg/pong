@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 700.0
 @export var side = 'p1'
 
 func _physics_process(delta):
@@ -25,5 +25,6 @@ func get_axis(up, down):
 	elif Input.is_key_pressed(down): return 1
 
 func _on_area_2d_body_entered(body):
+	$HitSound.play()
 	body.direction.x *= -1
 	Main.side = side

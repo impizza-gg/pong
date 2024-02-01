@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 700.0
 var direction = Vector2.ZERO
 
 func _ready():
