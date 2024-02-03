@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_dtj0l")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s0k14")
+volume_db = -25.0
 
 [node name="Toto" type="Sprite2D" parent="."]
 position = Vector2(-40.5219, -170.985)
